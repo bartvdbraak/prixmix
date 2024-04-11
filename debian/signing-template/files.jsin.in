@@ -1,0 +1,13 @@
+{
+	"packages": {
+		"prixmix-kernel-@KVNAME@": {
+			"trusted_certs": [],
+			"files": [
+				{
+					"sig_type": "efi",
+					"file": "biit/vmlinuz-@KVNAME@"
+				}
+			]
+		}
+	}
+}

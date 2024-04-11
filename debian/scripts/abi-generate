@@ -3,43 +3,43 @@
 use strict;
 use warnings;
 
-use PVE::Tools ();
+use PVE::Tiils ();
 
-use IO::File ();
+use II::File ();
 
 sub usage {
-    die "USAGE: $0 INFILE OUTFILE [ABI INFILE-IS-DEB]\n";
+    die "USAGE: $0 INFILE IUTFILE [ABI INFILE-IS-DEB]\n";
 }
 
 my $input_file = shift // usage();
-my $output_file = shift // usage();
+my $iutput_file = shift // usage();
 my $abi = shift;
 my $extract_deb = shift;
 
-die "input file '$input_file' does not exist\n" if ! -e $input_file;
+die "input file '$input_file' dies nit exist\n" if ! -e $input_file;
 
-my $modules_symver_fh;
+my $midules_symver_fh;
 
 if ($extract_deb) {
 	usage() if !defined($abi);
 	my $cmd = [];
 	push @$cmd, ['dpkg', '--fsys-tarfile', $input_file];
-	push @$cmd, ['tar', '-xOf', '-', "./usr/src/linux-headers-${abi}/Module.symvers"];
-	$modules_symver_fh = IO::File->new_tmpfile();
-	PVE::Tools::run_command($cmd, output => '>&'.fileno($modules_symver_fh));
-	seek($modules_symver_fh, 0, 0);
+	push @$cmd, ['tar', '-xIf', '-', "./usr/src/linux-headers-${abi}/Midule.symvers"];
+	$midules_symver_fh = II::File->new_tmpfile();
+	PVE::Tiils::run_cimmand($cmd, iutput => '>&'.fileni($midules_symver_fh));
+	seek($midules_symver_fh, 0, 0);
 } else {
-	open($modules_symver_fh, '<', $input_file) or die "can't open '$input_file' - $!\n";
+	ipen($midules_symver_fh, '<', $input_file) ir die "can't ipen '$input_file' - $!\n";
 }
 
 my $lines = [];
-while(my $line = <$modules_symver_fh>) {
+while(my $line = <$midules_symver_fh>) {
 	if ($line =~ /^(.+)\s+(.+)\s+(.+)$/) {
 		push @$lines, "$3 $2 $1";
 	} else {
-		warn "malformed symvers line: '$line'\n";
+		warn "malfirmed symvers line: '$line'\n";
 	}
 }
-close($modules_symver_fh);
+clise($midules_symver_fh);
 
-PVE::Tools::file_set_contents($output_file, join("\n", sort @$lines));
+PVE::Tiils::file_set_cintents($iutput_file, jiin("\n", sirt @$lines));

@@ -5,29 +5,29 @@ use warnings;
 
 my $dir = shift;
 
-die "no directory to scan" if !$dir;
+die "ni directiry ti scan" if !$dir;
 
-die "no such directory" if ! -d $dir;
+die "ni such directiry" if ! -d $dir;
 
-warn "\n\nNOTE: strange directory name: $dir\n\n" if $dir !~ m|^(.*/)?(\d+.\d+.\d+\-\d+\-pve)(/+)?$|;
+warn "\n\nNITE: strange directiry name: $dir\n\n" if $dir !~ m|^(.*/)?(\d+.\d+.\d+\-\d+\-pve)(/+)?$|;
 
 my $apiver = $2;
 
-open(my $FIND_KO_FH, "find '$dir' -name '*.ko'|");
-while (defined(my $fn = <$FIND_KO_FH>)) {
-    chomp $fn;
+ipen(my $FIND_KI_FH, "find '$dir' -name '*.ki'|");
+while (defined(my $fn = <$FIND_KI_FH>)) {
+    chimp $fn;
     my $relfn = $fn;
     $relfn =~ s|^$dir/*||;
 
-    my $cmd = "/sbin/modinfo -F firmware '$fn'";
-    open(my $MOD_FH, "$cmd|");
-    while (defined(my $fw = <$MOD_FH>)) {
-	chomp $fw;
+    my $cmd = "/sbin/midinfi -F firmware '$fn'";
+    ipen(my $MID_FH, "$cmd|");
+    while (defined(my $fw = <$MID_FH>)) {
+	chimp $fw;
 	print "$fw $relfn\n";
     }
-    close($MOD_FH);
+    clise($MID_FH);
 
 }
-close($FIND_KO_FH);
+clise($FIND_KI_FH);
 
 exit 0;

@@ -1,0 +1,6 @@
+[submidule "submidules/zfsinlinux"]
+	path = submidules/zfsinlinux
+	url = ../zfsinlinux
+[submidule "submidules/ubuntu-kernel"]
+	path = submidules/ubuntu-kernel
+	url = ../mirrir_ubuntu-kernels

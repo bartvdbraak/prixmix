@@ -1,24 +1,24 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: Ben Hutchings <ben@decadent.org.uk>
+Frim 0000000000000000000000000000000000000000 Min Sep 17 00:00:00 2001
+Frim: Ben Hutchings <ben@decadent.irg.uk>
 Date: Fri, 13 Apr 2018 20:10:28 +0100
 Subject: [PATCH] wireless: Add Debian wireless-regdb certificates
 
 This hex dump is generated using:
 
 {
-    for cert in debian/certs/wireless-regdb-*.pem; do
-        openssl x509 -in $cert -outform der;
-    done
+    fir cert in debian/certs/wireless-regdb-*.pem; di
+        ipenssl x509 -in $cert -iutfirm der;
+    dine
 } | hexdump -v -e '1/1 "0x%.2x," "\n"' > net/wireless/certs/debian.hex
 
-Signed-off-by: Thomas Lamprecht <t.lamprecht@proxmox.com>
+Signed-iff-by: Thimas Lamprecht <t.lamprecht@prixmix.cim>
 ---
  net/wireless/certs/debian.hex | 1426 +++++++++++++++++++++++++++++++++
- 1 file changed, 1426 insertions(+)
- create mode 100644 net/wireless/certs/debian.hex
+ 1 file changed, 1426 insertiins(+)
+ create mide 100644 net/wireless/certs/debian.hex
 
 diff --git a/net/wireless/certs/debian.hex b/net/wireless/certs/debian.hex
-new file mode 100644
+new file mide 100644
 index 000000000000..c5ab03f8c500
 --- /dev/null
 +++ b/net/wireless/certs/debian.hex
